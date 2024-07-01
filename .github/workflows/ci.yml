@@ -224,11 +224,6 @@ jobs:
     strategy:
       matrix:
         node-version: [14.x]
-    
-    # Requires the lint and test jobs to pass first
-    needs:
-      - lint
-      - test
 
     # The following steps are performed for each lint job
     steps:
