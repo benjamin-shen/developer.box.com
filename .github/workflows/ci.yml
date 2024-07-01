@@ -10,7 +10,6 @@ on:
       - en-staging
       - en-snapshot
       - jp
-      - jp-partial
       - jp-staging
   # Run for PRs on main and staging
   pull_request:
