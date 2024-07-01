@@ -1,0 +1,81 @@
+Arguments: 
+  /Users/bczyz/.nvm/versions/node/v18.16.0/bin/node /Users/bczyz/.yarn/bin/yarn.js install
+
+PATH: 
+  /Users/bczyz/.pyenv/shims:/opt/homebrew/opt/curl/bin:/Users/bczyz/.yarn/bin:/Users/bczyz/.config/yarn/global/node_modules/.bin:/Users/bczyz/.nvm/versions/node/v18.16.0/bin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/opt/homebrew/opt/curl/bin:/Users/bczyz/.yarn/bin:/Users/bczyz/.config/yarn/global/node_modules/.bin:/Users/bczyz/.nvm/versions/node/v18.16.0/bin:/Library/Frameworks/Python.framework/Versions/3.10/bin:/opt/homebrew/bin:/opt/homebrew/sbin
+
+Yarn version: 
+  1.22.18
+
+Node version: 
+  18.16.0
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  SyntaxError: /Users/bczyz/repos/developer.box.com/package.json: Unexpected token } in JSON at position 1024
+      at JSON.parse (<anonymous>)
+      at /Users/bczyz/.yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/Users/bczyz/.yarn/lib/cli.js:310:30)
+      at /Users/bczyz/.yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "developer.box.com",
+    "description": "Box Developer Documentation - Configuration",
+    "version": "1.0.0",
+    "main": "content/pages/index.md",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/box/developer.box.com.git"
+    },
+    "keywords": [
+      "box",
+      "platform",
+      "api",
+      "documentation"
+    ],
+    "author": "Box <developer@box.com>",
+    "license": "Apache-2.0",
+    "private": true,
+    "scripts": {
+      "clean": "rm -rf compiled && mkdir compiled",
+      "prebuild": "yarn clean",
+      "build": "concurrently 'yarn:build:*'",
+      "build:microcopy": "node -e 'require(\"./src/microcopy\").write()' --no-warnings",
+      "build:guides": "node -e 'require(\"./src/markdown\").writeGuides()'",
+      "build:pages": "node -e 'require(\"./src/markdown\").writePages()'",
+      "build:actions": "cp -rf .github ./compiled",
+      "postbuild": "yarn optimize:images",
+      "optimize:images": "node src/images/optimize.js",
+      "start": "yarn watch:content",
+      "develop": "concurrently 'yarn watch:test'",
+    },
+    "dependencies": {
+      "@apidevtools/json-schema-ref-parser": "^9.0.1",
+      "alex": "^9.0.1",
+      "axios": "^0.21.2",
+      "comment-json": "^4.0.4",
+      "concurrently": "^5.3.0",
+      "dot-prop": "^6.0.0",
+      "fs-extra": "^9.0.0",
+      "glob": "^7.1.6",
+      "jest": "^26.6.3",
+      "js-yaml": "^3.13.1",
+      "jsonpath": "^1.0.2",
+      "markdown-spellcheck": "^1.3.1",
+      "markdownlint-cli": "^0.32.0",
+      "sha1-from-file": "^2.0.1",
+      "sharp": "^0.26.2",
+      "strip-indent": "^3.0.0",
+      "watch": "^1.0.2"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
