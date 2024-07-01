@@ -9,9 +9,7 @@ on:
       - en
       - en-staging
       - en-snapshot
-      - jp
-      - jp-staging
-  # Run for PRs on main and staging
+      - jp  # Run for PRs on main and staging
   pull_request:
     branches: [main, staging, jp-staging]
 
@@ -226,6 +224,11 @@ jobs:
     strategy:
       matrix:
         node-version: [14.x]
+    
+    # Requires the lint and test jobs to pass first
+    needs:
+      - lint
+      - test
 
     # The following steps are performed for each lint job
     steps:
