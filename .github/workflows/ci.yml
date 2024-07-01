@@ -154,7 +154,7 @@ jobs:
         with:
           args: "Error running `deploy` job in OpenAPI CI"
 
-  # The deploy task actually deploys any changes to the en-staging branch
+  # The deploy task actually deploys any changes to the staging branch
   push-to-en-staging:
     # We run this on the latest ubuntu
     runs-on: ubuntu-latest
