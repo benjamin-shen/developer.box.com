@@ -221,10 +221,10 @@ jobs:
     # Only run for the jp-staging branch
     if: ${{ github.ref == 'refs/heads/jp-staging' }}
 
-    # We use node 14.X
+    # We use node 18.X
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [18.x]
 
     # The following steps are performed for each push job
     steps:
