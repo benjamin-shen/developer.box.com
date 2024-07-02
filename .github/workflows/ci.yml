@@ -9,7 +9,8 @@ on:
       - en
       - en-staging
       - en-snapshot
-      - jp  # Run for PRs on main and staging
+      - jp  
+  # Run for PRs on main and staging
   pull_request:
     branches: [main, staging, jp-staging]
 
@@ -217,13 +218,13 @@ jobs:
     # We run this on the latest ubuntu
     runs-on: ubuntu-latest
 
-    # Only run for the staging branch
+    # Only run for the jp-staging branch
     if: github.ref == 'refs/heads/jp-staging'
 
-    # We use node 14.X
+    # We use node 18.X
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [18.x]
 
     # The following steps are performed for each lint job
     steps:
