@@ -91,7 +91,7 @@ jobs:
     timeout-minutes: 3
 
     # Only run for the main branch
-    if: github.ref == 'refs/heads/main'
+    if: ${{ github.ref == 'refs/heads/main' }}
 
     # We use node 14.X
     strategy:
@@ -158,7 +158,7 @@ jobs:
     runs-on: ubuntu-latest
 
     # Only run for the staging branch
-    if: github.ref == 'refs/heads/staging'
+    if: ${{ github.ref == 'refs/heads/staging' }}
 
     # We use node 14.X
     strategy:
@@ -219,12 +219,12 @@ jobs:
     runs-on: ubuntu-latest
 
     # Only run for the jp-staging branch
-    if: github.ref == 'refs/heads/jp-staging'
+    if: ${{ github.ref == 'refs/heads/jp-staging' }}
 
     # We use node 18.X
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [14.x]
 
     # The following steps are performed for each lint job
     steps:

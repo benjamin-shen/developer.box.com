@@ -17,6 +17,13 @@
   "license": "Apache-2.0",
   "private": true,
   "scripts": {
+    "test": "jest ./tests",
+    "watch:content": "concurrently 'yarn:watch:microcopy' 'yarn:watch:guides' 'yarn:watch:pages' 'yarn:watch:lint'",
+    "watch:microcopy": "watch 'yarn build:microcopy' content/microcopy src --interval=0.2",
+    "watch:guides": "watch 'yarn build:guides' content/guides src --interval=0.2",
+    "watch:pages": "watch 'yarn build:pages' content/pages src --interval=0.2",
+    "watch:lint": "watch 'yarn lint:all' src content --interval=1",
+    "watch:test": "watch 'yarn test' src tests --interval=1",
     "clean": "rm -rf compiled && mkdir compiled",
     "prebuild": "yarn clean",
     "build": "concurrently 'yarn:build:*'",
@@ -27,7 +34,14 @@
     "postbuild": "yarn optimize:images",
     "optimize:images": "node src/images/optimize.js",
     "start": "yarn watch:content",
-    "develop": "concurrently 'yarn watch:test'"
+    "develop": "concurrently 'yarn watch:test'",
+    "new": "yarn new:guide",
+    "new:guide": "yarn new:guide:example",
+    "new:guide:example": "node -e 'require(\"./src/scripts/from-template\").run(\"template.md\", \"guides\")'",
+    "new:guide:empty": "node -e 'require(\"./src/scripts/from-template\").run(\"template-empty.md\", \"guides\")'",
+    "new:page": "yarn new:page:example",
+    "new:page:example": "node -e 'require(\"./src/scripts/from-template\").run(\"template.md\", \"pages\")'",
+    "new:page:empty": "node -e 'require(\"./src/scripts/from-template\").run(\"template-empty.md\", \"pages\")'"
   },
   "dependencies": {
     "@apidevtools/json-schema-ref-parser": "^9.0.1",
