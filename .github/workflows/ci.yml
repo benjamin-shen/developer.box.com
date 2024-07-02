@@ -221,22 +221,27 @@ jobs:
     # Only run for the jp-staging branch
     if: ${{ github.ref == 'refs/heads/jp-staging' }}
 
-    # We use node 18.X
+    # We use node 14.X
     strategy:
       matrix:
         node-version: [14.x]
 
-    # The following steps are performed for each lint job
+    # The following steps are performed for each push job
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+     
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
 
-      - name: Compile the content
+      - name: Build the content
         run: |
           yarn install
           yarn build
 
-      - name: Push compiled content
+      - name: Push the content
         uses: s0/git-publish-subdir-action@v2.4.0
         env:
           REPO: self
